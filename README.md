@@ -1,16 +1,16 @@
 # GreatPlaces
 
-A new Flutter project.
+Developing this application by following the steps and tutorials from an Udemy Cource on Flutter & Dart.
 
-## Getting Started
+This is the Application using which one can store the details about the places. Main aim is learn about how to use the native device features like Camera, GPS, Maps, etc.
 
-This project is a starting point for a Flutter application.
+################################################################################
 
-A few resources to get you started if this is your first Flutter project:
+Step 1 - Built basic structure of the application.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Step 2 - Imported the packages: path (to get the basename of the captured image), path_provider (to get the directory of local files of the application on the device), provider, image_picker(to use native device feature - Camera), sqflite(to store data in device storage using SQL).
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Step 3 - Using image_picker, path & path-provide dependencies, implemented the logic to capture and store the image locally.
+
+Step 4 - Using sqflite dependency, implemented the logic to create database; insert & retrieve the data from the database.
+

@@ -21,23 +21,32 @@ class PlacesList extends StatelessWidget {
           )
         ],
       ),
-      body: Consumer<Places>(
-        child: Center(
-          child: const Text('No places added yet. Start adding them!'),
-        ),
-        builder: (ctx, places, ch) => places.places.length <= 0
-            ? ch
-            : ListView.builder(
-                itemCount: places.places.length,
-                itemBuilder: (context, index) => ListTile(
-                  leading: CircleAvatar(
-                    backgroundImage: FileImage(places.places[index].image),
-                  ),
-                  title: Text(places.places[index].title),
-                  onTap: () {
-                    //....
-                  },
+      body: FutureBuilder(
+        future: Provider.of<Places>(context, listen: false).fetchAndSetPlaces(),
+        builder: (ctx, snapshot) => snapshot.connectionState ==
+                ConnectionState.waiting
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : Consumer<Places>(
+                child: Center(
+                  child: const Text('No places added yet. Start adding them!'),
                 ),
+                builder: (ctx, places, ch) => places.places.length <= 0
+                    ? ch
+                    : ListView.builder(
+                        itemCount: places.places.length,
+                        itemBuilder: (context, index) => ListTile(
+                          leading: CircleAvatar(
+                            backgroundImage:
+                                FileImage(places.places[index].image),
+                          ),
+                          title: Text(places.places[index].title),
+                          onTap: () {
+                            //....
+                          },
+                        ),
+                      ),
               ),
       ),
     );
